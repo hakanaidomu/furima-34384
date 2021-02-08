@@ -2,16 +2,16 @@
 
 ## usersテーブル
 
-| Column         | Type   | options     |
-|----------------| -------|-------------|
-| nickname       | string | null: false |
-| email          | string | null: false |
-| password       | string | null: false |
-| first_name     | string | null: false |
-| last_name      | string | null: false |
-| first_name_kana| string | null: false |
-| last_name_kana | string | null: false |
-| birthday       | string | null: false |
+| Column             | Type   | options                  |
+|--------------------| -------|------------------------- |
+| nickname           | string | null: false              |
+| email              | string | null: false,unique: true |
+| encrypted_password | string | null: false              |
+| first_name         | string | null: false              |
+| last_name          | string | null: false              |
+| first_name_kana    | string | null: false              |
+| last_name_kana     | string | null: false              |
+| birthday           | date   | null: false              |
 
 ### Association
 - has_many :items
@@ -50,7 +50,7 @@
 ## profileテーブル
 | Column           | Type          | options                        |
 | ---------------- | ------------- | ------------------------------ |
-| postal_code      | integer       | null: false                    |
+| postal_code      | string        | null: false                    |
 | prefecture_id    | integer       | null: false                    |
 | city             | string        | null: false                    |
 | house_number     | string        | null: false                    |
