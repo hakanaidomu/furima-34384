@@ -1,13 +1,11 @@
 require 'rails_helper'
 
-
 RSpec.describe User, type: :model do
   describe 'ユーザー新規登録' do
     before do
       @user = FactoryBot.build(:user)
     end
-  
-  
+
     describe 'ユーザー新規登録' do
       context '新規登録がうまくいくとき' do
         it "nickname,,email,first_name,last_name,first_name_kana,last_name_kana,birthday,
@@ -40,7 +38,7 @@ RSpec.describe User, type: :model do
         another_user = FactoryBot.build(:user, email: @user.email)
         another_user.valid?
         expect(another_user.errors.full_messages).to include('Email has already been taken')
-        end
+      end
 
       it 'emailに@が含まれていないとユーザー登録できない' do
         @user.email = 'aaabbb'
@@ -115,7 +113,7 @@ RSpec.describe User, type: :model do
         @user.valid?
         expect(@user.errors.full_messages).to include('Password 6文字以上の半角英数字')
       end
-      
+
       it 'passwordが半角数字のみだとユーザー登録できない' do
         @user.password = '111111'
         @user.password_confirmation = '123456'
