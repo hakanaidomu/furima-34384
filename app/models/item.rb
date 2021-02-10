@@ -1,5 +1,6 @@
 class Item < ApplicationRecord
   belongs_to :user
+  has_one_attached :image
 
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :category
@@ -27,7 +28,5 @@ end
     validates :delivery_fee_id
     validates :prefecture_id
     validates :delivery_day_id
-  end
-  end
   end
 end
