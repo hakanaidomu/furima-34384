@@ -19,91 +19,90 @@ RSpec.describe Item, type: :model do
           @item.valid?
           expect(@item.errors.full_messages).to include("Image can't be blank")
         end
-      end
 
-      it 'titleが空では出品できない' do
-        @item.title = nil
-        @item.valid?
-        expect(@item.errors.full_messages).to include("Title can't be blank")
-      end
+        it 'titleが空では出品できない' do
+          @item.title = nil
+          @item.valid?
+          expect(@item.errors.full_messages).to include("Title can't be blank")
+        end
 
-      
-      it 'aboutが空では出品できない' do
-        @item.about = nil
-        @item.valid?
-        expect(@item.errors.full_messages).to include("About can't be blank")
-      end
+        it 'aboutが空では出品できない' do
+          @item.about = nil
+          @item.valid?
+          expect(@item.errors.full_messages).to include("About can't be blank")
+        end
 
-      it 'category_idが空では出品できない' do
-        @item.category_id = nil
-        @item.valid?
-        expect(@item.errors.full_messages).to include("Category can't be blank")
-      end
+        it 'category_idが空では出品できない' do
+          @item.category_id = nil
+          @item.valid?
+          expect(@item.errors.full_messages).to include("Category can't be blank")
+        end
 
-      it 'status_idが空では出品できない' do
-        @item.status_id = nil
-        @item.valid?
-        expect(@item.errors.full_messages).to include("Status can't be blank")
-      end
+        it 'status_idが空では出品できない' do
+          @item.status_id = nil
+          @item.valid?
+          expect(@item.errors.full_messages).to include("Status can't be blank")
+        end
 
-      it 'delivery_fee_idが空では出品できない' do
-        @item.delivery_fee_id = nil
-        @item.valid?
-        expect(@item.errors.full_messages).to include("Delivery fee can't be blank")
-      end
+        it 'delivery_fee_idが空では出品できない' do
+          @item.delivery_fee_id = nil
+          @item.valid?
+          expect(@item.errors.full_messages).to include("Delivery fee can't be blank")
+        end
 
-      it 'prefecture_idが空では登録できない' do
-        @item.prefecture_id = nil
-        @item.valid?
-        expect(@item.errors.full_messages).to include("Prefecture can't be blank")
-      end
+        it 'prefecture_idが空では登録できない' do
+          @item.prefecture_id = nil
+          @item.valid?
+          expect(@item.errors.full_messages).to include("Prefecture can't be blank")
+        end
 
-      it 'delivery_day_idが空では登録できない' do
-        @item.delivery_day_id = nil
-        @item.valid?
-        expect(@item.errors.full_messages).to include("Delivery day can't be blank")
-      end
+        it 'delivery_day_idが空では登録できない' do
+          @item.delivery_day_id = nil
+          @item.valid?
+          expect(@item.errors.full_messages).to include("Delivery day can't be blank")
+        end
 
-      it 'priceが299だと登録できない' do
-        @item.price = 299
-        @item.valid?
-        expect(@item.errors.full_messages).to include("Price must be greater than or equal to 300")
-      end
+        it 'priceが299だと登録できない' do
+          @item.price = 299
+          @item.valid?
+          expect(@item.errors.full_messages).to include('Price must be greater than or equal to 300')
+        end
 
-      it 'priceが10000000だと登録できない' do
-        @item.price = 10_000_000
-        @item.valid?
-        expect(@item.errors.full_messages).to include("Price must be less than or equal to 9999999")
-      end
+        it 'priceが10000000だと登録できない' do
+          @item.price = 10_000_000
+          @item.valid?
+          expect(@item.errors.full_messages).to include('Price must be less than or equal to 9999999')
+        end
 
-      it 'category_idが1だと登録できない' do
-        @item.category_id = 1
-        @item.valid?
-        expect(@item.errors.full_messages).to include('Category must be other than 1')
-      end
+        it 'category_idが1だと登録できない' do
+          @item.category_id = 1
+          @item.valid?
+          expect(@item.errors.full_messages).to include('Category must be other than 1')
+        end
 
-      it 'status_idが1だと登録できない' do
-        @item.status_id = 1
-        @item.valid?
-        expect(@item.errors.full_messages).to include('Status must be other than 1')
-      end
+        it 'status_idが1だと登録できない' do
+          @item.status_id = 1
+          @item.valid?
+          expect(@item.errors.full_messages).to include('Status must be other than 1')
+        end
 
-      it 'delivery_fee_idが1だと登録できない' do
-        @item.delivery_fee_id = 1
-        @item.valid?
-        expect(@item.errors.full_messages).to include('Delivery fee must be other than 1')
-      end
+        it 'delivery_fee_idが1だと登録できない' do
+          @item.delivery_fee_id = 1
+          @item.valid?
+          expect(@item.errors.full_messages).to include('Delivery fee must be other than 1')
+        end
 
-      it 'prefecture_idが1だと登録できない' do
-        @item.prefecture_id = 1
-        @item.valid?
-        expect(@item.errors.full_messages).to include('Prefecture must be other than 1')
-      end
+        it 'prefecture_idが1だと登録できない' do
+          @item.prefecture_id = 1
+          @item.valid?
+          expect(@item.errors.full_messages).to include('Prefecture must be other than 1')
+        end
 
-      it 'delivery_day_idが1だと登録できない' do
-        @item.delivery_day_id = 1
-        @item.valid?
-        expect(@item.errors.full_messages).to include('Delivery day must be other than 1')
+        it 'delivery_day_idが1だと登録できない' do
+          @item.delivery_day_id = 1
+          @item.valid?
+          expect(@item.errors.full_messages).to include('Delivery day must be other than 1')
+        end
       end
     end
   end

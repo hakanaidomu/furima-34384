@@ -1,13 +1,13 @@
 FactoryBot.define do
-  factory :item do 
+  factory :item do
     title { 'テスト' }
-    about  {' テスト用の説明' }
+    about { ' テスト用の説明' }
     category_id { 2 }
     status_id { 2 }
     delivery_fee_id { 2 }
     prefecture_id { 2 }
     delivery_day_id { 2 }
-    price {10000}
+    price { 10_000 }
     association :user
 
     after(:build) do |item|
