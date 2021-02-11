@@ -74,7 +74,6 @@ RSpec.describe Item, type: :model do
           expect(@item.errors.full_messages).to include('Price must be less than or equal to 9999999')
         end
 
-
         it 'priceが半角英語だけでは登録できない' do
           @item.price = 'aaa'
           @item.valid?
