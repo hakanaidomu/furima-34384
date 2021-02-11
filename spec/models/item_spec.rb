@@ -87,13 +87,13 @@ RSpec.describe Item, type: :model do
           expect(@item.errors.full_messages).to include('Price is not a number')
         end
 
-        it 'price全角文字では登録できないこと' do
+        it 'priceが全角文字では登録できない' do
           @item.price = '１１１１１'
           @item.valid?
           expect(@item.errors.full_messages).to include('Price is not a number')
         end
 
-        it 'price空の場合登録できないこと' do
+        it 'priceが空の場合登録できない' do
           @item.price = nil
           @item.valid?
           expect(@item.errors.full_messages).to include('Price is not a number')
