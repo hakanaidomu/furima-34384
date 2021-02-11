@@ -2,7 +2,7 @@ class ItemsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create]
 
   def new
-    @item = Item.new
+    @item = Item.new.order(created_at: :desc)
   end
 
   def create
