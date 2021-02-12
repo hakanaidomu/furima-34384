@@ -48,7 +48,7 @@ class ItemsController < ApplicationController
   def redirect 
     if user_signed_in?
       if @item.user_id != current_user.id
-      redirect_to root_path
+        redirect_to root_path
       end
     else
       redirect_to root_path
