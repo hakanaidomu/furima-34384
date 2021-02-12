@@ -1,6 +1,7 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create]
-  before_action :redirect, only: [:edit, :update]
+  before_action :set_item, only: [:show, :edit, :update]
+  before_action :redirect, only: [:show, :edit]
   def new
     @item = Item.new
   end
@@ -19,11 +20,9 @@ class ItemsController < ApplicationController
   end
 
   def show
-    @item = Item.find(params[:id])
   end
 
   def edit
-    @item = Item.find(params[:id])
   end
 
   def update
@@ -42,8 +41,12 @@ class ItemsController < ApplicationController
                                  :delivery_day_id, :price).merge(user_id: current_user.id)
   end
 
+  def set_item
+    @item = Item.find(params[:id])
+  end
+
   def redirect 
-    unless @item.user_id != current_user.id
+    if @item.user_id != current_user.id
     redirect_to action: :show
     end
   end
