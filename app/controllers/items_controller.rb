@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create]
-
+  before_action :redirect, only: [:edit, :update]
   def new
     @item = Item.new
   end
@@ -41,4 +41,11 @@ class ItemsController < ApplicationController
     params.require(:item).permit(:image, :title, :about, :category_id, :status_id, :delivery_fee_id, :prefecture_id,
                                  :delivery_day_id, :price).merge(user_id: current_user.id)
   end
+
+  def redirect 
+    unless @item.user_id != current_user.id
+    redirect_to action: :show
+    end
+  end
+
 end
