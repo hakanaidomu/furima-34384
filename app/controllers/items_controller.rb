@@ -45,14 +45,11 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
   end
 
-  def redirect 
+  def redirect
     if user_signed_in?
-      if @item.user_id != current_user.id
-        redirect_to root_path
-      end
+      redirect_to root_path if @item.user_id != current_user.id
     else
       redirect_to root_path
     end
   end
-
 end
