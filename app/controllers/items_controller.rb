@@ -33,6 +33,8 @@ class ItemsController < ApplicationController
     end
   end
 
+  def destroy
+  end
   private
 
   def item_params
