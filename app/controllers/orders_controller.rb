@@ -1,5 +1,5 @@
 class OrdersController < ApplicationController
-before_action :set_item, only: [:index]
+before_action :set_item, only: [:index, :create]
 
   def index
     @order_profile = OrderProfile.new
@@ -7,8 +7,8 @@ before_action :set_item, only: [:index]
 
   def create
     @order = OrderProfile.new(order_params)
-    @order.save
-    if @order.save
+    if @order.valid?
+      @order.sava
       redirect_to root_path
     else
       render :index
