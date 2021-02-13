@@ -20,7 +20,7 @@ end
 private
 
 def order_params
-  params.require(:order_profile).permit(:postal_code, :prefecture_id, :city, :house_number, :building_name, :tel, :item_id, :token).merge(user_id: current_user.id)
+  params.require(:order_profile).permit(:postal_code, :prefecture_id, :city, :house_number, :building_name, :tel, :item_id).merge(user_id: current_user.id)
 end
 
 def set_item
