@@ -11,12 +11,12 @@ class OrderProfile
     validates :item_id
   end
   validates :prefecture, numericality: {other_than: 0, message: "can't be blank"}
-  validates :postal_code, presence: true, format: {with: /\A[0-9]{3}-[0-9]{4}\z/, message: "is invalid. Include hyphen(-)"}
+  validates :postal_code, presence: true, format: {with: /\A[0-9]{3}-[0-9]{4}\z/}
 
 
   def save
-    order = Order.create(item: item, user_id: user_id)
-    Profile.create(postal_code: postal_code, prefecture: prefecture, 
+    order = Order.create(item_id: item_id, user_id: user_id)
+    Profile.create(postal_code: postal_code, prefecture_id: prefecture_id, 
                   city: city, house_number: house_number, building_name: building_name, tel: tel, order_id: order.id)
   end
 end
