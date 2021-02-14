@@ -8,7 +8,7 @@ RSpec.describe OrderProfile, type: :model do
 
     describe '購入'
     context '登録できること' do
-      it 'postal_code,prefecture_id,city,house_number,telの値が存在すれば登録できること' do
+      it 'postal_code,prefecture_id,city,house_number,tel,tokenの値が存在すれば登録できること' do
         expect(@order_profile).to be_valid
       end
 
@@ -65,6 +65,12 @@ RSpec.describe OrderProfile, type: :model do
         @order_profile.tel = "112233445566"
         @order_profile.valid?
         expect(@order_profile.errors.full_messages). to include("Tel is invalid")
+      end
+
+      it "tokenが空では登録できないこと" do
+        @order_profile.token = nil
+        @order_profile.valid?
+        expect(@order_profile.errors.full_messages).to include("Token can't be blank")
       end
     end
   end
