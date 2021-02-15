@@ -3,7 +3,10 @@ require 'rails_helper'
 RSpec.describe OrderProfile, type: :model do
   describe '購入機能' do
     before do
-      @order_profile = FactoryBot.build(:order_profile)
+      @user = FactoryBot.create(:user)
+      @item = FactoryBot.create(:item, user_id: @user.id)
+      @order_profile = FactoryBot.build(:order_profile, user_id: @user.id, item_id: @item.id)
+      sleep(0.5)
     end
 
     describe '購入'
