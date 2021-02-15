@@ -1,13 +1,10 @@
 class OrdersController < ApplicationController
   before_action :authenticate_user!
   before_action :set_item, only: [:index, :create]
+  before_action :redirect, only: [:index, :create]
 
   def index
-    if current_user.id != @item.user_id && @item.order.nil?
-      @order_profile = OrderProfile.new
-    else
-      redirect_to root_path
-    end
+    @order_profile = OrderProfile.new
   end
 
   def create
@@ -32,6 +29,12 @@ end
 
 def set_item
   @item = Item.find(params[:item_id])
+end
+
+def redirect
+  unless  current_user.id != @item.user_id && @item.order.nil?
+    redirect_to root_path
+  end
 end
 
 def pay_item
