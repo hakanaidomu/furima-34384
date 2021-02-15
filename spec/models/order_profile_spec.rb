@@ -67,6 +67,18 @@ RSpec.describe OrderProfile, type: :model do
         expect(@order_profile.errors.full_messages).to include('Tel is invalid')
       end
 
+      it 'telが英数字混合だと登録できない' do
+        @order_profile.tel = 'aaaaa11111'
+        @order_profile.valid?
+        expect(@order_profile.errors.full_messages).to include('Tel is invalid')
+      end
+
+      it 'telが全角数字だと登録できない' do
+        @order_profile.tel = '１２３４５６７８９０１'
+        @order_profile.valid?
+        expect(@order_profile.errors.full_messages).to include('Tel is invalid')
+      end
+
       it 'tokenが空では登録できない' do
         @order_profile.token = nil
         @order_profile.valid?
