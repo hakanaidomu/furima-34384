@@ -37,6 +37,7 @@ class ItemsController < ApplicationController
     @item.destroy
     redirect_to root_path
   end
+
   private
 
   def item_params
@@ -49,8 +50,6 @@ class ItemsController < ApplicationController
   end
 
   def redirect
-    if @item.user_id != current_user.id || @item.order != nil
-      redirect_to root_path
-    end
+    redirect_to root_path if @item.user_id != current_user.id || !@item.order.nil?
   end
 end
